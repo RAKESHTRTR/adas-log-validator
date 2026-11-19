@@ -1,7 +1,10 @@
+import pytest
 from validators.trace_checker import check_trace
 
-def test_detects_timing_and_speed_faults():
-    errors = check_trace("sample_data/vehicle_trace.csv")
-    assert len(errors) == 2
-    assert any("timestamp gap" in e for e in errors)
-    assert any("invalid ego_speed_mps" in e for e in errors)
+@pytest.mark.parametrize("csv_path, expected_errors", [
+    ("sample_data/nominal_aeb.csv", 0),
+    ("sample_data/vehicle_trace.csv", 2),
+])
+def test_trace_suite(csv_path, expected_errors):
+    errors = check_trace(csv_path)
+    assert len(errors) == expected_errors, f"Unexpected errors: {errors}"

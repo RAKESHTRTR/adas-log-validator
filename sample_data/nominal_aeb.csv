@@ -1,0 +1,5 @@
+timestamp_ms,ego_speed_mps,lead_dist_m,aeb_active
+100,20.0,30.0,0
+120,20.0,29.6,0
+140,18.0,29.2,1
+160,15.0,28.9,1
