@@ -15,3 +15,15 @@ Modern ADAS/AV validation requires deterministic, reproducible checks that run i
    g++ --version
    python3 --version
    pip install pytest
+
+g++ -std=c++17 src/hello_adas.cpp -o hello_adas && ./hello_adas
+
+pytest -v
+
+adas-log-validator/
+├── src/                # C++17 log/signal processing utilities
+├── validators/         # Python signal-trace & KPI validation modules
+├── tests/              # Parameterized pytest suites
+├── sample_data/        # Synthetic vehicle/CAN trace CSVs
+├── Dockerfile          # Reproducible validation container
+└── .github/workflows/  # Automated CI regression gate
