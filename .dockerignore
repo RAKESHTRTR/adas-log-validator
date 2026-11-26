@@ -1,0 +1,9 @@
+.git
+__pycache__
+.pytest_cache
+notes
+fast_stats
+smart_ptr_demo
+optional_parse
+threaded_logger
+hello_adas
