@@ -6,5 +6,6 @@ RUN apt-get update && \
 
 WORKDIR /app
 COPY . .
+RUN g++ -std=c++17 -O2 -Wall -Wextra -Werror src/fast_stats.cpp -o /usr/local/bin/fast_stats
 ENV PYTHONPATH=/app
 CMD ["pytest", "-v"]
