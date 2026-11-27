@@ -1,0 +1,23 @@
+name: ADAS Log Validator CI
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Build validation Docker image
+        run: docker build -t adas-log-validator .
+
+      - name: Run pytest regression suite
+        run: docker run --rm adas-log-validator
+
+      - name: Run C++17 fast_stats smoke check
+        run: docker run --rm adas-log-validator fast_stats sample_data/nominal_aeb.csv
